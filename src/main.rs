@@ -8,5 +8,10 @@ fn fib(n: u32) -> u32 {
 
 fn main() {
     let n = 10;
-    println!("The {}th Fibonacci number is: {}", n, fib(n))
+    match n {
+        5 => println!("Fibonacci of 0 is 0"),
+        10 => println!("The {}th Fibonacci number is: {}", n, fib(n)),
+        _ => println!("Calculating Fibonacci of {}", n),    
+    }
+    
 }
