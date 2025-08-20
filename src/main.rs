@@ -1,17 +1,19 @@
-fn fib(n: u32) -> u32 {
-    if n < 2 {
-        return n
-    } else {
-        return fib(n - 1) + fib(n - 2)
-    }
-}
-
 fn main() {
-    let n = 10;
-    match n {
-        5 => println!("Fibonacci of 0 is 0"),
-        10 => println!("The {}th Fibonacci number is: {}", n, fib(n)),
-        _ => println!("Calculating Fibonacci of {}", n),    
+    // let mut x = 100;
+    // while  x >= 10 {
+    //     x = x / 2;
+    // }
+    // dbg!(x);
+    let mut x = 0;
+    loop {
+        x += 1;
+        if x > 100 {
+            break;
+        }
+        
+        if x % 2 == 0 {
+            continue;
+        }
+        dbg!(x);
     }
-    
 }
