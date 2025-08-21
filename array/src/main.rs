@@ -1,12 +1,21 @@
-fn check_order(tuple: (i32, i32, i32)) -> bool {
-    let (left, middle, right) = tuple;
-    left < middle && middle < right
+fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
+    let mut result = [[0; 3]; 3];
+    for i in 0..3 {
+        for j in 0..3 {
+            result[j][i] = matrix[i][j];
+        }
+    }
+    result
 }
 
 fn main() {
-    let tuple = (1, 5, 3);
-    println!(
-        "{tuple:?}: {}",
-        if check_order(tuple) { "ordered" } else { "unordered" }
-    );
+    let matrix = [
+        [101, 102, 103], // <-- the comment makes rustfmt add a newline
+        [201, 202, 203],
+        [301, 302, 303],
+    ];
+
+    dbg!(matrix);
+    let transposed = transpose(matrix);
+    dbg!(transposed);
 }
