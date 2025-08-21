@@ -1,19 +1,24 @@
-fn main() {
-    // let mut x = 100;
-    // while  x >= 10 {
-    //     x = x / 2;
-    // }
-    // dbg!(x);
-    let mut x = 0;
-    loop {
-        x += 1;
-        if x > 100 {
-            break;
+// fn fib(n: u32) -> u32 {
+//     if n < 2 {
+//         return n
+//     } else {
+//         return fib(n - 1) + fib(n - 2)
+//     }
+// }
+
+fn collatz(mut n: i32) -> u32 {
+    let mut len = 1;
+    while n > 1 {
+        if n % 2 == 0 {
+            n /= 2;
+        } else {
+            n = 3 * n + 1;
         }
-        
-        if x % 2 == 0 {
-            continue;
-        }
-        dbg!(x);
+        len += 1;
     }
+    len
+}
+
+fn main() {
+   println!("Length: {}", collatz(11));
 }
