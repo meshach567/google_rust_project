@@ -6,7 +6,7 @@ pub struct Vehicle {
     manufacturer: String,
     model: String,
     year: u32,
-    id: String,
+    id: Option<String>,
 }
 
 #[debug_handler]
@@ -17,10 +17,11 @@ pub async fn vehicle_get() -> Json<Vehicle> {
         manufacturer: "Dodge".to_string(),
         model: "RAM 1500".to_string(),
         year: 2024,
-        id: uuid::Uuid::new_v4().to_string(),
+        id: Some(uuid::Uuid::new_v4().to_string()),
     })
 }
 
-pub async fn vehicle_post() {
-
+pub async fn vehicle_post(Json(mut v): Json<Vehicle>) -> Json<Vehicle> {
+    println!("Manufacturer:{0}, model: {1}, year: {2}", v.manufacturer, v.model, v.year)
+    Json::from(v)
 }
