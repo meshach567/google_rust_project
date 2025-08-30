@@ -1,8 +1,8 @@
-use axum::{debug_handler, routing::{get, post}, Json, Router};
+use axum::{ routing::{get, post}, Router};
 
 mod vehicle;
 
-use vehicle::{vehicle_get, vehicle_post};
+// use vehicle::{vehicle_get, vehicle_post};
 
 #[tokio::main]
 
