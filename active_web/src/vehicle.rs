@@ -1,7 +1,8 @@
+use axum::extract::Query;
 use axum::Json;
 use axum::debug_handler;
 
-#[derive(Debug, serde::Serialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct Vehicle {
     manufacturer: String,
     model: String,
@@ -21,7 +22,13 @@ pub async fn vehicle_get() -> Json<Vehicle> {
     })
 }
 
-pub async fn vehicle_post(Json(mut v): Json<Vehicle>) -> Json<Vehicle> {
-    println!("Manufacturer:{0}, model: {1}, year: {2}", v.manufacturer, v.model, v.year)
-    Json::from(v)
+// pub async fn vehicle_post(Json(mut v): Json<Vehicle>) -> Json<Vehicle> {
+//     println!("Manufacturer:{0}, model: {1}, year: {2}", v.manufacturer, v.model, v.year);
+//     v.id = Some(uuid::Uuid::new_v4().to_string());
+//     Json::from(v)
+// }
+
+pub async fn vehicle_post(Query(mut v): Query<Vehicle>) -> Json<Vehicle> {
+    v.id = Some(uuid::Uuid::new_v4().to_string());
+   Json::from(v)
 }
